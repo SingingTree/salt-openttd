@@ -1,1 +1,4 @@
 {% set name = 'openttd' %}
+{% if grains['kernel'] == 'Linux' %}
+	{% set os_string_component = 'linux-' + grains['os'].lower() + '-' + grains['oscodename'].lower()  %}
+{% endif %}
