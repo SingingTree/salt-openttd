@@ -2,3 +2,7 @@ openttd:
   major_version: 1
   minor_version: 5
   patch_version: 3
+  file_hash: sha256=d9dbdf6f31b3e6dc0b78ac0e8b139432807b1bda5d7669f882e1e14085a7c816
+
+tmux:
+  install: false
