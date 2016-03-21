@@ -1,4 +1,15 @@
+{# Setup package name #}
 {% set name = 'openttd' %}
+
+{# Setup vesion string #}
+{% set major_version = salt['pillar.get']('openttd:major_version')|string %}
+{% set minor_version = salt['pillar.get']('openttd:minor_version')|string %}
+{% set patch_version = salt['pillar.get']('openttd:patch_version')|string %}
+{% set version_string = major_version + '.' + minor_version  + '.' + patch_version  %}
+
 {% if grains['kernel'] == 'Linux' %}
-	{% set os_string_component = 'linux-' + grains['os'].lower() + '-' + grains['oscodename'].lower()  %}
+	{% set os_string = 'linux-' + grains['os'].lower() + '-' + grains['oscodename'].lower()  %}
+	{% set file_suffix = '.deb' %}
+	{% set file_name = 'openttd-' + version_string + '-' + os_string + '-amd64' + file_suffix %}
+	{% set source_url = 'https://binaries.openttd.org/releases/' + version_string + '/' + file_name %}
 {% endif %}
