@@ -2,14 +2,23 @@
 {% set name = 'openttd' %}
 
 {# Setup vesion string #}
-{% set major_version = salt['pillar.get']('openttd:major_version')|string %}
-{% set minor_version = salt['pillar.get']('openttd:minor_version')|string %}
-{% set patch_version = salt['pillar.get']('openttd:patch_version')|string %}
-{% set version_string = major_version + '.' + minor_version  + '.' + patch_version  %}
+{% set openttd_major_version = salt['pillar.get']('openttd:major_version')|string %}
+{% set openttd_minor_version = salt['pillar.get']('openttd:minor_version')|string %}
+{% set openttd_patch_version = salt['pillar.get']('openttd:patch_version')|string %}
+{% set openttd_version_string = openttd_major_version + '.' + openttd_minor_version  + '.' + openttd_patch_version  %}
 
 {% if grains['kernel'] == 'Linux' %}
 	{% set os_string = 'linux-' + grains['os'].lower() + '-' + grains['oscodename'].lower()  %}
-	{% set file_suffix = '.deb' %}
-	{% set file_name = 'openttd-' + version_string + '-' + os_string + '-amd64' + file_suffix %}
-	{% set source_url = 'https://binaries.openttd.org/releases/' + version_string + '/' + file_name %}
+	{% set openttd_file_suffix = '.deb' %}
 {% endif %}
+
+{% set openttd_file_name = 'openttd-' + openttd_version_string + '-' + os_string + '-amd64' + openttd_file_suffix %}
+{% set openttd_source_url = 'https://binaries.openttd.org/releases/' + openttd_version_string + '/' + openttd_file_name %}
+
+{% set opengfx_major_version = salt['pillar.get']('opengfx:major_version')|string %}
+{% set opengfx_minor_version = salt['pillar.get']('opengfx:minor_version')|string %}
+{% set opengfx_patch_version = salt['pillar.get']('opengfx:patch_version')|string %}
+{% set opengfx_version_string = opengfx_major_version + '.' + opengfx_major_version  + '.' + opengfx_major_version  %}
+
+{% set opengfx_file_name = 'opengfx-' + opengfx_version_string + '-all.zip' %}
+{% set opengfx_url = 'https://binaries.openttd.org/extra/opengfx/' + opengfx_version_string + '/' + opengfx_file_name %}
