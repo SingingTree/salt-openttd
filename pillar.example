@@ -3,5 +3,10 @@ openttd:
   minor_version: 5
   patch_version: 3
 
+opengfx:
+  major_version: 0
+  minor_version: 5
+  patch_version: 2
+
 tmux:
   install: false
