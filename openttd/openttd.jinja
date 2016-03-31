@@ -18,7 +18,7 @@
 {% set opengfx_major_version = salt['pillar.get']('opengfx:major_version')|string %}
 {% set opengfx_minor_version = salt['pillar.get']('opengfx:minor_version')|string %}
 {% set opengfx_patch_version = salt['pillar.get']('opengfx:patch_version')|string %}
-{% set opengfx_version_string = opengfx_major_version + '.' + opengfx_major_version  + '.' + opengfx_major_version  %}
+{% set opengfx_version_string = opengfx_major_version + '.' + opengfx_minor_version  + '.' + opengfx_patch_version  %}
 
 {% set opengfx_file_name = 'opengfx-' + opengfx_version_string + '-all.zip' %}
-{% set opengfx_url = 'https://binaries.openttd.org/extra/opengfx/' + opengfx_version_string + '/' + opengfx_file_name %}
+{% set opengfx_source_url = 'https://binaries.openttd.org/extra/opengfx/' + opengfx_version_string + '/' + opengfx_file_name %}
