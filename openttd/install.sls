@@ -15,13 +15,13 @@ openttd.install:
 {% endif %}
 
 {% if fetch_open_gfx %}
-opengfx.install1:
+opengfx.install:
   archive.extracted:
     - name: /tmp/opengfx
     - source: {{ opengfx_source_url }}
     - source_hash: sha1=1c25d2d4d906924725146e214910f14036820eb2
     - archive_format: tar
-    - tar_options: J
+    - tar_options: z
 {% endif %}
 
 # Tmux
