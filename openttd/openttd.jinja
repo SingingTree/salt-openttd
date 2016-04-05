@@ -10,6 +10,7 @@
 {% if grains['kernel'] == 'Linux' %}
 	{% set os_string = 'linux-' + grains['os'].lower() + '-' + grains['oscodename'].lower()  %}
 	{% set openttd_file_suffix = '.deb' %}
+	{% set openttd_install_dir = '/usr/share/games/openttd' %}
 {% endif %}
 
 {% set openttd_file_name = 'openttd-' + openttd_version_string + '-' + os_string + '-amd64' + openttd_file_suffix %}
@@ -22,3 +23,6 @@
 
 {% set opengfx_file_name = 'opengfx-' + opengfx_version_string + '-all.zip' %}
 {% set opengfx_source_url = 'https://binaries.openttd.org/extra/opengfx/' + opengfx_version_string + '/' + opengfx_file_name %}
+
+{% set opengfx_temp_dir = '/tmp/opengfx' %}
+{% set opengfx_extracted_dir = opengfx_temp_dir + '/opengfx-' + opengfx_version_string %}
