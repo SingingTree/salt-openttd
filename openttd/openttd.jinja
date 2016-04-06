@@ -1,14 +1,16 @@
 {# Setup package name #}
 {% set name = 'openttd' %}
 
-{# Setup vesion string #}
+{# Setup openttd vesion string #}
 {% set openttd_major_version = salt['pillar.get']('openttd:major_version')|string %}
 {% set openttd_minor_version = salt['pillar.get']('openttd:minor_version')|string %}
 {% set openttd_patch_version = salt['pillar.get']('openttd:patch_version')|string %}
 {% set openttd_version_string = openttd_major_version + '.' + openttd_minor_version  + '.' + openttd_patch_version  %}
 
+{# Setup openttd os specific strings #}
 {% if grains['kernel'] == 'Linux' %}
 	{% set os_string = 'linux-' + grains['os'].lower() + '-' + grains['oscodename'].lower()  %}
+	{# Works for Debian or Ubuntu #}
 	{% set openttd_file_suffix = '.deb' %}
 	{% set openttd_install_dir = '/usr/share/games/openttd' %}
 {% endif %}
@@ -16,6 +18,7 @@
 {% set openttd_file_name = 'openttd-' + openttd_version_string + '-' + os_string + '-amd64' + openttd_file_suffix %}
 {% set openttd_source_url = 'https://binaries.openttd.org/releases/' + openttd_version_string + '/' + openttd_file_name %}
 
+{# Setup opengfx vesion string #}
 {% set opengfx_major_version = salt['pillar.get']('opengfx:major_version')|string %}
 {% set opengfx_minor_version = salt['pillar.get']('opengfx:minor_version')|string %}
 {% set opengfx_patch_version = salt['pillar.get']('opengfx:patch_version')|string %}

@@ -1,4 +1,5 @@
-{% from 'openttd/openttd.jinja' import name, openttd_source_url, opengfx_temp_dir, opengfx_source_url with context %}
+{% from 'openttd/openttd.jinja' import name, openttd_source_url,
+opengfx_source_url, opengfx_temp_dir, opengfx_extracted_dir with context %}
 {% set fetch_from_openttd_site = true %}
 {% set fetch_open_gfx = true %}
 
@@ -22,6 +23,10 @@ opengfx.install:
     - source_hash: sha1=1c25d2d4d906924725146e214910f14036820eb2
     - archive_format: tar
     - tar_options: z
+  file.copy:
+    - name: /tmp/test1/opengfx.obg
+    - source: {{ opengfx_extracted_dir }}/opengfx.obg
+    - force: True
 {% endif %}
 
 # Tmux
