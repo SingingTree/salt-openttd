@@ -1,6 +1,6 @@
 {% from 'openttd/openttd.jinja' import name, openttd_source_url,
-opengfx_source_url, opengfx_temp_dir, opengfx_extracted_dir,
-opengfx_files with context %}
+openttd_install_dir, opengfx_source_url, opengfx_temp_dir,
+opengfx_extracted_dir, opengfx_files with context %}
 {% set fetch_from_openttd_site = true %}
 {% set fetch_open_gfx = true %}
 
@@ -28,7 +28,7 @@ opengfx.install:
 {% for file in opengfx_files %}
 opengfx.copy_{{ file}}:
   file.copy:
-    - name: /tmp/test1/{{ file }}
+    - name: {{ openttd_install_dir }}/baseset/{{ file }}
     - source: {{ opengfx_extracted_dir }}/{{ file }}
     - force: True
 {% endfor %}
