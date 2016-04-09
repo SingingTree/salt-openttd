@@ -1,11 +1,10 @@
 {% from 'openttd/openttd.jinja' import name, openttd_source_url,
 openttd_install_dir, opengfx_source_url, opengfx_temp_dir,
 opengfx_extracted_dir, opengfx_files with context %}
-{% set fetch_from_openttd_site = true %}
 {% set fetch_open_gfx = true %}
 
 # OpenTTD
-{% if fetch_from_openttd_site %}
+{% if salt['pillar.get']('openttd:install_from_site', false) %}
 openttd.install:
   pkg.installed:
     - sources:
@@ -16,7 +15,7 @@ openttd.install:
     - name: {{ name }}
 {% endif %}
 
-{% if fetch_open_gfx %}
+{% if salt['pillar.get']('opengfx:fetch', false) %}
 opengfx.install:
   archive.extracted:
     - name: {{ opengfx_temp_dir }}

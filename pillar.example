@@ -2,11 +2,13 @@ openttd:
   major_version: 1
   minor_version: 5
   patch_version: 3
+  install_from_site: true
 
 opengfx:
   major_version: 0
   minor_version: 5
   patch_version: 2
+  fetch: true
 
 tmux:
   install: false
