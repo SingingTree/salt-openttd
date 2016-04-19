@@ -1,7 +1,6 @@
 {% from 'openttd/openttd.jinja' import name, openttd_source_url,
 openttd_install_dir, opengfx_source_url, opengfx_temp_dir,
 opengfx_extracted_dir, opengfx_files with context %}
-{% set fetch_open_gfx = true %}
 
 # OpenTTD
 {% if salt['pillar.get']('openttd:install_from_site', false) %}
@@ -20,7 +19,7 @@ opengfx.install:
   archive.extracted:
     - name: {{ opengfx_temp_dir }}
     - source: {{ opengfx_source_url }}
-    - source_hash: sha1=1c25d2d4d906924725146e214910f14036820eb2
+    - source_hash: {{ pillar['opengfx']['source_hash']}}
     - archive_format: tar
     - tar_options: z
 
