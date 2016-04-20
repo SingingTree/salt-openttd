@@ -14,6 +14,7 @@ openttd.install:
     - name: {{ name }}
 {% endif %}
 
+# OpenGfx
 {% if salt['pillar.get']('opengfx:fetch', false) %}
 opengfx.install:
   archive.extracted:
