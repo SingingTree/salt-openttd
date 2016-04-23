@@ -10,6 +10,3 @@ opengfx:
   patch_version: 2
   fetch: true
   source_hash: sha1=1c25d2d4d906924725146e214910f14036820eb2
-
-tmux:
-  install: false

@@ -13,3 +13,5 @@ An example pillar is provided, showing the settings that can be used to retrieve
 ### Notes
 
 Tested with salts installed via salt bootstrap, should work with various older versions, though I have had some issues despite theoretical compatibility.
+
+[Tmux](https://tmux.github.io/) is a useful terminal multiplexer for managing a persistent session.

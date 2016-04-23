@@ -2,6 +2,8 @@
 openttd_install_dir, opengfx_source_url, opengfx_temp_dir,
 opengfx_extracted_dir, opengfx_files with context %}
 
+#TODO: create an openttd user
+
 # OpenTTD
 {% if salt['pillar.get']('openttd:install_from_site', false) %}
 openttd.install:
@@ -31,11 +33,4 @@ opengfx.copy_{{ file}}:
     - source: {{ opengfx_extracted_dir }}/{{ file }}
     - force: True
 {% endfor %}
-{% endif %}
-
-# Tmux
-{% if salt['pillar.get']('tmux:install', false) %}
-tmux.install:
-  pkg.installed:
-    - name: tmux
 {% endif %}
