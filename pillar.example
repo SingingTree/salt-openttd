@@ -3,6 +3,9 @@ openttd:
   minor_version: 5
   patch_version: 3
   install_from_site: true
+  add_user: true
+  user: openttd
+  group: openttd
 
 opengfx:
   major_version: 0

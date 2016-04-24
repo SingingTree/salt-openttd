@@ -15,6 +15,11 @@ openttd.install:
   pkg.latest:
     - name: {{ name }}
 {% endif %}
+{% if salt['pillar.get']('openttd:add_user', false) %}
+openttd.add_user:
+  user.present:
+   - name: {{ pillar['openttd']['user'] }}
+{% endif %}
 
 # OpenGfx
 {% if salt['pillar.get']('opengfx:fetch', false) %}
