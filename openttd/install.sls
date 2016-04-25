@@ -19,6 +19,11 @@ openttd.install:
 openttd.add_user:
   user.present:
    - name: {{ pillar['openttd']['user'] }}
+   - shell: /bin/bash
+  group.present:
+    - name: {{ pillar['openttd']['group'] }}
+    - members:
+      - {{ pillar['openttd']['user'] }}
 {% endif %}
 
 # OpenGfx
